@@ -1,0 +1,28 @@
+<!-- TOOLBAR -->
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" (click)="drawer.toggle()" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>MOVESION</span>
+  <span class="example-spacer"></span>
+  <span class="target" *ngIf="auth.isAuth" >
+    <h6 class="name">{{nameAv | slice: 0:2 | uppercase}}</h6>
+  </span>
+</mat-toolbar>
+
+
+<!-- SIDEBAR -->
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/homepage" *ngIf="auth.isAuth"> HOME </a>
+      <a mat-list-item routerLink="" *ngIf="!auth.isAuth"> LOGIN </a>
+      <a mat-list-item routerLink="" (click)="auth.logout()" *ngIf="auth.isAuth"> LOGOUT </a>
+   </mat-nav-list>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>
+
+

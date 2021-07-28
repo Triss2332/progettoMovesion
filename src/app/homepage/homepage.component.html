@@ -1,0 +1,66 @@
+<div class="container mt-4 d-flex justify-content-center">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="text-center">Lista delle Aziende</h2>
+            <p class="text-center" *ngIf="companies.length < 1">Non presenti aziende.</p>
+            <mat-card class="card mb-3" *ngFor="let company of companies; let i = index;">
+                <mat-card-header>
+                    <mat-card-title>{{company.name}}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <input type="text" [disabled]="true" label="Disabled" matInput placeholder="Address" name="address" #address="ngModel" [(ngModel)]="company.address">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Phone</mat-label>
+                        <input type="text" [disabled]="true" label="Disabled" matInput placeholder="Phone" name="phone" #phone="ngModel" [(ngModel)]="company.phone">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Revenue</mat-label>
+                        <input type="text" [disabled]="true" label="Disabled" matInput placeholder="Revenue" name="revenue" #revenue="ngModel" [(ngModel)]="company.revenue">
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+
+        <div class="col-sm-6">
+            <h2 class="text-center">Nuova Azienda</h2>
+            <mat-card class="card">
+
+                <mat-card-content>
+                    <form #addform="ngForm" (ngSubmit)="addCard(addform)">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input matInput placeholder="Name" id="name" #name="ngModel" name="name" [(ngModel)]="company.name">
+                        </mat-form-field>
+    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Address</mat-label>
+                            <input matInput placeholder="Address" id="address" #address="ngModel" name="address" [(ngModel)]="company.address">
+                        </mat-form-field>
+    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Phone</mat-label>
+                            <input matInput placeholder="Phone" id="phone" #phone="ngModel" name="phone" [(ngModel)]="company.phone">
+                        </mat-form-field>
+    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Revenue</mat-label>
+                            <input matInput placeholder="Revenue" id="revenue" #revenue="ngModel" name="revenue" [(ngModel)]="company.revenue">
+                        </mat-form-field>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" mat-raised-button color="primary">Aggiungi</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+</div>
